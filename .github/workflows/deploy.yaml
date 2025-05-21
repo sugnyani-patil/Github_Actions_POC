@@ -1,1 +1,36 @@
+name: Run Hello.py on Merge to Main
 
+on:
+  push:
+    branches:
+      - main  # Trigger only when a PR is merged into main
+
+jobs:
+  run-python-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.x
+
+    - name: Run hello.py
+      run: |
+        echo "Running hello.py"
+        python hello.py
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2  # Change to your region
+
+    - name: Upload config.yaml to S3
+      run: |
+        echo "Uploading config.yaml to S3..."
+        aws s3 cp config.yaml s3://sugnyani-patil/Config 
