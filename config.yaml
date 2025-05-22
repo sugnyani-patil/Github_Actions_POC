@@ -1,2 +1,4 @@
 environment: dev
 version: 1.0.0. 
+environment: prod
+version: 2.0.0
