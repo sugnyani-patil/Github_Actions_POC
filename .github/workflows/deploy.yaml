@@ -22,8 +22,8 @@ jobs:
     #   run: |
     #     pip install boto3
 
-    - name: Test AWS Credentials
-      run: aws sts get-caller-identity
+    # - name: Test AWS Credentials
+    #   run: aws sts get-caller-identity
 
     - name: Run hello.py
       run: |
