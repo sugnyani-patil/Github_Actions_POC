@@ -1,9 +1,16 @@
 name: Run Hello.py on Merge to Main
 
+# on:
+#   push:
+#     branches:
+#       - main  # Trigger only when a PR is merged into main
+
 on:
-  push:
+  pull_request:
     branches:
-      - main  # Trigger only when a PR is merged into main
+      - main  # Trigger only when a PR is merged into the 'main' branch
+    types:
+      - closed  # We want to trigger the workflow when the PR is closed (merged)
 
 jobs:
   run-python-and-upload:
