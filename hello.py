@@ -11,6 +11,6 @@ def upload_to_s3():
     print("Upload complete.")
 
 if __name__ == "__main__":
-    print("Hello, Hello,  world from GitHub Actions!")
+    print("Hello, Hello, Hello world from GitHub Actions!")
     upload_to_s3()
 
