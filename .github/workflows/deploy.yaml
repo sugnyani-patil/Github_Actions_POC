@@ -41,6 +41,17 @@ jobs:
         echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}"
         echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
 
+    - name: Validate merged branch
+      run: |
+        echo "Base branch is: ${{ github.base_ref }}"
+        if [[ "${{ github.base_ref }}" == "main" ]]; then
+          echo "Read desired branch"
+          echo "Printing this message for confirmation"
+        else
+          echo "The branch on which change is made is not the main branch."
+          exit 1
+        fi
+        
     # - name: Test AWS Credentials
     #   run: aws sts get-caller-identity
 
