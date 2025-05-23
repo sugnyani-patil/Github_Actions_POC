@@ -59,4 +59,14 @@ jobs:
     # - name: Upload config.yaml to S3
     #   run: |
     #     echo "Uploading config.yaml to S3..."
-    #     aws s3 cp config.yaml s3://sugnyani-patil/Config      
+    #     aws s3 cp config.yaml s3://sugnyani-patil/Config    
+    - name: Configure Git user
+      run: |
+        git config --global user.name "sugnyani-patil"
+        git config --global user.email "patilsugnyani@gmail.com"
+
+    - name: Commit and Push changes
+      run: |
+        git add .
+        git diff --cached --quiet || git commit -m "Auto-commit changes from hello.py"
+        git push    
