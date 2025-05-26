@@ -81,9 +81,9 @@ jobs:
         echo "Starting Git commit & push process..."
 
         # Check if the file exists
-        if [ -f text1.text ]; then
-          git add ./text1.text
-          echo 'Successfully added text1.text to staging area'
+        if [ -f test1.text ]; then
+          git add ./test1.text
+          echo 'Successfully added test1.text to staging area'
 
           if git diff --cached --quiet; then
             echo 'No changes to commit, skipping commit and push'
@@ -94,6 +94,6 @@ jobs:
             echo 'Successfully pushed to branch ${{ github.ref_name }}'
           fi
         else
-          echo 'File text1.text does not exist. Skipping Git operations.'
+          echo 'File test1.text does not exist. Skipping Git operations.'
         fi
 
