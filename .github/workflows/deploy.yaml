@@ -9,8 +9,8 @@ on:
   pull_request:
     branches:
       - main  # Trigger only when a PR is merged into the 'main' branch
-    types:
-      - closed  # We want to trigger the workflow when the PR is closed (merged)
+    # types:
+    #   - closed  # We want to trigger the workflow when the PR is closed (merged)
 
 jobs:
   run-python-and-upload:
@@ -88,7 +88,7 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No changes to commit, skipping commit and push'
           else
-            git commit -m "Auto-commit: Updated text1.text"
+            git commit -m "Auto-commit: Updated test1.text"
             echo 'Successfully committed changes'
             git push origin HEAD:${{ github.ref_name }}
             echo 'Successfully pushed to branch ${{ github.ref_name }}'
