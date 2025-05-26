@@ -76,6 +76,24 @@ jobs:
         git config --global user.name "sugnyani-patil"
         git config --global user.email "patilsugnyani@gmail.com"
 
+    # Step 1: Create test1.txt
+    - name: Step 1 - Create test1.txt
+      run: |
+        echo "This is the initial content in test1.txt" > test1.txt
+
+    # Step 2: Commit and push
+    - name: Step 2 - Commit and Push test1.txt
+      run: |
+        git add .
+        git diff --cached --quiet || git commit -m "Add test1.txt - initial commit"
+        git push
+
+      # Step 3: Update test1.txt
+    - name: Step 3 - Update test1.txt
+      run: |
+        echo "This is the UPDATED content in test1.txt" > test1.txt
+  
+      # Step 4: Commit and push the update
     - name: Commit and Push changes
       run: |
         git add .
